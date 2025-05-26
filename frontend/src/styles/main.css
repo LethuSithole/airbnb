@@ -1,0 +1,56 @@
+/* src/styles/main.css */
+:root {
+  --primary: #FF5A5F;
+  --secondary: #008489;
+  --dark: #484848;
+  --light: #ffffff;
+  --gray: #767676;
+  --light-gray: #f7f7f7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--dark);
+}
+
+.header {
+  background-color: var(--light);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  min-width: 150px;
+}
