@@ -1,8 +1,12 @@
-const Accommodation = require('../models/Accommodation');
+const Accommodation = require("../models/Accommodation");
 
 exports.createAccommodation = async (req, res) => {
   try {
-    const newAcc = await Accommodation.create({ ...req.body, host: req.user.id });
+    const newAcc = await Accommodation.create({
+      ...req.body,
+      host: req.user.username,
+      host_id: req.user.id,
+    });
     res.status(201).json(newAcc);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -14,11 +18,21 @@ exports.getAccommodations = async (req, res) => {
   res.json(listings);
 };
 
+exports.getHostAccommodations = async (req, res) => {
+  try {
+    console.log('User making request:', req.user);
+    const listings = await Accommodation.find({ host_id: req.user.id });
+    res.json(listings);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 exports.deleteAccommodation = async (req, res) => {
   try {
     await Accommodation.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Deleted' });
+    res.json({ message: "Deleted" });
   } catch (err) {
-    res.status(404).json({ message: 'Not found' });
+    res.status(404).json({ message: "Not found" });
   }
 };
