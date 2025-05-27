@@ -28,6 +28,19 @@ exports.getHostAccommodations = async (req, res) => {
   }
 };
 
+exports.updateAccommodation = async (req, res) => {
+  try {
+    const updated = await Accommodation.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.json(updated);
+  } catch (err) {
+    res.status(404).json({ message: 'Accommodation not found' });
+  }
+};
+
 exports.deleteAccommodation = async (req, res) => {
   try {
     await Accommodation.findByIdAndDelete(req.params.id);
