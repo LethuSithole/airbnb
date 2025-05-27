@@ -13,10 +13,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await api.post('/users/login', { username, password });
-      if (res.data.user.role !== 'host') {
-        setError('You do not have access. Only hosts can login here.');
-        return;
-      }
+      // if (res.data.user.role !== 'host') {
+      //   setError('You do not have access. Only hosts can login here.');
+      //   return;
+      // }
       login(res.data.token, res.data.user);
       navigate('/');
     } catch (err) {

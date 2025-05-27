@@ -18,7 +18,7 @@ const Header = () => {
           {user ? (
             <>
               <span style={{ marginRight: '1rem' }}>Hello, {user.username}</span>
-              <Link to="/reservations" style={{ marginRight: '1rem' }}>Reservations</Link>
+              {/* <Link to="/reservations" style={{ marginRight: '1rem' }}>Reservations</Link> */}
               <button onClick={handleLogout}>Logout</button>
             </>
           ) : (

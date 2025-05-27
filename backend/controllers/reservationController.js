@@ -10,6 +10,7 @@ exports.createReservation = async (req, res) => {
 };
 
 exports.getReservationsByUser = async (req, res) => {
+  console.log('Fetching reservations for user:', req.user);
   const reservations = await Reservation.find({ user: req.user.id }).populate('accommodation');
   res.json(reservations);
 };

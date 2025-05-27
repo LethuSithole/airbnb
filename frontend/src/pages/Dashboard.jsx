@@ -35,6 +35,9 @@ const Dashboard = () => {
       <h1>My Listings</h1>
 
       <div style={{ marginBottom: '1rem' }}>
+        <button onClick={() => navigate('/reservations')} style={{ marginRight: '1rem' }}>
+          📅 View Reservations
+        </button>
         <button onClick={() => navigate('/listings/create')} style={{ marginRight: '1rem' }}>
           ➕ Create Listing
         </button>
