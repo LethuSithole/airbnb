@@ -14,8 +14,24 @@ exports.createAccommodation = async (req, res) => {
 };
 
 exports.getAccommodations = async (req, res) => {
-  const listings = await Accommodation.find();
-  res.json(listings);
+  try {
+    const listings = await Accommodation.find();
+    res.json(listings);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getAccommodationById = async (req, res) => {
+  try {
+    const accommodation = await Accommodation.findById(req.params.id);
+    if (!accommodation) {
+      return res.status(404).json({ message: 'Accommodation not found' });
+    }
+    res.json(accommodation);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 exports.getHostAccommodations = async (req, res) => {

@@ -132,7 +132,7 @@ const EditListing = () => {
         )}
       </form>
 
-      <style jsx>{`
+      <style>{`
         .edit-container {
           max-width: 800px;
           margin: 0 auto;

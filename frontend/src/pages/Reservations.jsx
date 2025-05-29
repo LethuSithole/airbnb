@@ -25,7 +25,8 @@ const Reservations = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this reservation?")) return;
+    if (!window.confirm("Are you sure you want to delete this reservation?"))
+      return;
     setDeletingId(id);
     try {
       await api.delete(`/reservations/${id}`);
@@ -42,7 +43,7 @@ const Reservations = () => {
   return (
     <div className="reservations-container">
       <h2 className="page-title">My Reservations</h2>
-      
+
       {reservations.length === 0 ? (
         <p className="no-reservations">No reservations found.</p>
       ) : (
@@ -58,29 +59,31 @@ const Reservations = () => {
               </tr>
             </thead>
             <tbody>
-              {reservations.map((res) => (
-                <tr key={res._id}>
-                  <td>{res.user?.name || "Guest"}</td>
-                  <td>{res.accommodation?.title || "Untitled Listing"}</td>
-                  <td>{new Date(res.startDate).toLocaleDateString()}</td>
-                  <td>{new Date(res.endDate).toLocaleDateString()}</td>
-                  <td>
-                    <button
-                      onClick={() => handleDelete(res._id)}
-                      disabled={deletingId === res._id}
-                      className="delete-btn"
-                    >
-                      {deletingId === res._id ? "Deleting..." : "Delete"}
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {[...reservations]
+                .sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
+                .map((res) => (
+                  <tr key={res._id}>
+                    <td>{res.user?.name || "Guest"}</td>
+                    <td>{res.accommodation?.title || "Untitled Listing"}</td>
+                    <td>{new Date(res.startDate).toLocaleDateString()}</td>
+                    <td>{new Date(res.endDate).toLocaleDateString()}</td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(res._id)}
+                        disabled={deletingId === res._id}
+                        className="delete-btn"
+                      >
+                        {deletingId === res._id ? "Deleting..." : "Delete"}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         .reservations-container {
           width: 90%;
           margin: 0 auto;

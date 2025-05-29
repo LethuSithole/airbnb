@@ -65,7 +65,7 @@ const AdminLogin = () => {
         {error && <p className="error-message">{error}</p>}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .login-container {
           display: flex;
           height: 100vh;

@@ -98,7 +98,7 @@ const Dashboard = () => {
         ))
       )}
 
-      <style jsx>{`
+      <style>{`
         .container {
           padding: 1rem;
           width: 100%;

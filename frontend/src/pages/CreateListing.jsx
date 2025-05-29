@@ -214,7 +214,7 @@ const CreateListing = () => {
         )}
       </form>
 
-      <style jsx>{`
+      <style>{`
         .create-listing-container {
           max-width: 1000px;
           margin: 0 auto;
