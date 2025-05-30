@@ -1,21 +1,27 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Locations from "./pages/Locations";
 import LocationDetails from "./pages/LocationDetails";
 import Login from "./pages/Login";
-import AdminLogin from './pages/AdminLogin';
+import AdminLogin from "./pages/AdminLogin";
 import Dashboard from "./pages/Dashboard";
 import CreateListing from "./pages/CreateListing";
 import ViewListings from "./pages/ViewListings";
 import EditListing from "./pages/EditListing";
 import Reservations from "./pages/Reservations";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 import Header from "./components/Header";
-import './App.css';
+import "./App.css";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const hideHeaderRoutes = ['/login', '/admin-login'];
+  const hideHeaderRoutes = ["/login", "/admin-login"];
   const hideHeader = hideHeaderRoutes.includes(location.pathname);
 
   return (
@@ -41,8 +47,10 @@ function App() {
             <Route path="/listings/create" element={<CreateListing />} />
             <Route path="/listings/edit/:id" element={<EditListing />} />
           </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route element={<PublicRoute />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+          </Route>
         </Routes>
       </Layout>
     </Router>
