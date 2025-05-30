@@ -34,20 +34,19 @@ const Home = () => (
   <div className="home-container">
     {/* Hero Section */}
     <section className="hero-background">
-
-    <section
-      className="hero-section"
-      style={{
-        backgroundImage: `url(${HeroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="hero-content">
-        <h1 className="hero-title">Not sure where to go? Perfect.</h1>
-        <button className="hero-button">I'm flexible</button>
-      </div>
-    </section>
+      <section
+        className="hero-section"
+        style={{
+          backgroundImage: `url(${HeroImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="hero-content">
+          <h1 className="hero-title">Not sure where to go? Perfect.</h1>
+          <button className="hero-button">I'm flexible</button>
+        </div>
+      </section>
     </section>
 
     {/* Destinations Section */}
@@ -114,6 +113,42 @@ const Home = () => (
       <div className="hosting-left-content">
         <h2>Questions about hosting?</h2>
         <button className="superhost-btn">Ask a Superhost</button>
+      </div>
+    </section>
+
+    {/* Inspiration for Future Getaways Section */}
+    <section className="inspiration-section">
+      <h1 className="section-title">Inspiration for future getaways</h1>
+      <div className="tabs">
+        <span className="active-tab">Destinations for arts & culture</span>
+        <span>Destinations for outdoor adventure</span>
+        <span>Mountain cabins</span>
+        <span>Beach destinations</span>
+        <span>Popular destinations</span>
+        <span>Unique Stays</span>
+      </div>
+      <div className="inspiration-grid">
+        {[
+          ["Phoenix", "Arizona"],
+          ["Hot Springs", "Arkansas"],
+          ["Los Angeles", "California"],
+          ["San Diego", "California"],
+          ["San Francisco", "California"],
+          ["Barcelona", "Catalonia"],
+          ["Prague", "Czechia"],
+          ["Washington", "District of Columbia"],
+          ["Keswick", "England"],
+          ["London", "England"],
+          ["Scarborough", "England"],
+          ["Show more", ""],
+        ].map(([city, region], index) => (
+          <div className="inspiration-item" key={index}>
+            <span className={city === "Show more" ? "show-more" : "city"}>
+              {city}
+            </span>
+            {region && <span className="region">{region}</span>}
+          </div>
+        ))}
       </div>
     </section>
 
@@ -332,6 +367,58 @@ const Home = () => (
         font-weight: 600;
         border: none;
         border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .inspiration-section {
+        width: 90%;
+        margin: 4rem auto;
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        font-size: 1rem;
+      }
+
+      .tabs span {
+        cursor: pointer;
+        color: #717171;
+      }
+
+      .tabs .active-tab {
+        color: black;
+        border-bottom: 2px solid black;
+        padding-bottom: 4px;
+        font-weight: 600;
+      }
+
+      .inspiration-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .inspiration-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .inspiration-item .city {
+        font-weight: 600;
+        color: #000;
+      }
+
+      .inspiration-item .region {
+        color: #717171;
+      }
+
+      .inspiration-item .show-more {
+        text-decoration: underline;
+        color: #000;
+        font-weight: 500;
         cursor: pointer;
       }
 

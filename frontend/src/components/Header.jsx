@@ -24,7 +24,9 @@ const Header = () => {
 
         {/* Center Navigation */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-          <span style={{ fontWeight: 500, color: '#555' }}>Places to stay</span>
+          <Link to="/locations" style={{ fontWeight: 500, color: '#555', textDecoration: 'none' }}>
+            Places to stay
+          </Link>
           <span style={{ color: '#aaa' }}>Experiences</span>
           <span style={{ color: '#aaa' }}>Online Experiences</span>
         </div>
