@@ -42,18 +42,24 @@ const Locations = () => {
     <div className="container">
       <h1 className="page-title">Browse Listings</h1>
 
-      <div className="button-group" style={{ marginBottom: '1.5rem' }}>
+      <div className="filter-bar">
         <input
           type="text"
           value={location}
           onChange={handleFilter}
-          placeholder="Filter by location..."
-          className="btn"
-          style={{ width: '300px' }}
+          placeholder="Search by location..."
+          className="search-input"
         />
+        <div className="filter-tags">
+          <button className="tag">Free cancellation</button>
+          <button className="tag">Type of place</button>
+          <button className="tag">Price</button>
+          <button className="tag">Instant Book</button>
+          <button className="tag">More filters</button>
+        </div>
       </div>
 
-      <h2 style={{ marginBottom: '1rem' }}>
+      <h2 className="subheading">
         {filtered.length} accommodation{filtered.length !== 1 && 's'} found
         {location && ` in "${location}"`}
       </h2>
@@ -101,33 +107,47 @@ const Locations = () => {
 
         .page-title {
           font-size: 1.8rem;
+          margin-bottom: 1rem;
+        }
+
+        .filter-bar {
           margin-bottom: 1.5rem;
         }
 
-        .button-group {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.8rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .btn {
+        .search-input {
+          width: 100%;
+          max-width: 400px;
           padding: 0.5rem 1rem;
-          border-radius: 4px;
-          border: 1px solid #ddd;
-          background: #f8f8f8;
-          cursor: pointer;
-          font-size: 0.9rem;
-          transition: all 0.2s;
-        }
-
-        .btn:hover {
-          background: #e8e8e8;
-        }
-
-        .no-listings {
-          color: #666;
           font-size: 1rem;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          margin-bottom: 0.75rem;
+        }
+
+        .filter-tags {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+        }
+
+        .tag {
+          background: #f7f7f7;
+          border: 1px solid #ddd;
+          border-radius: 999px;
+          padding: 0.4rem 1rem;
+          font-size: 0.85rem;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+
+        .tag:hover {
+          background: #ebebeb;
+        }
+
+        .subheading {
+          margin: 1rem 0;
+          font-size: 1rem;
+          color: #444;
         }
 
         .listing-card {
