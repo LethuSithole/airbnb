@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getUser } from "../auth"; // Add this import
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import DatePicker from "react-datepicker";
@@ -52,15 +53,26 @@ const LocationDetails = () => {
   }, [id]);
 
   const handleReservation = async () => {
+    const user = getUser(); // Now this will work
+
+    if (!user) {
+      toast.error("You need to be logged in to make a reservation");
+      navigate("/login");
+      return;
+    }
+
     if (!startDate || !endDate) {
       toast.error("Please select both check-in and check-out dates");
       return;
     }
+
     if (startDate > endDate) {
       toast.error("Check-out date must be after check-in date");
       return;
     }
+
     setIsReserving(true);
+
     try {
       const res = await api.post("/reservations", {
         accommodation: listing._id,
@@ -80,15 +92,7 @@ const LocationDetails = () => {
           <p>Total: ${total}</p>
           <button
             onClick={() => navigate("/reservations")}
-            style={{
-              marginTop: "10px",
-              padding: "5px 10px",
-              background: "#fff",
-              color: "#FF385C",
-              border: "1px solid #FF385C",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
+            className="toast-button"
           >
             View My Trips
           </button>
@@ -702,6 +706,16 @@ const LocationDetails = () => {
           max-width: 1500px;
           margin: 0 auto;
           padding: 0 80px;
+        }
+
+        .toast-button {
+          margin-top: 10px;
+          padding: 5px 10px;
+          background: #fff;
+          color: #FF385C;
+          border: 1px solid #FF385C;
+          border-radius: 4px;
+          cursor: pointer;
         }
 
         .loading {

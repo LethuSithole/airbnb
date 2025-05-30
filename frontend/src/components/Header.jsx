@@ -134,7 +134,7 @@ const Header = () => {
           align-items: center;
           border: 1px solid #ddd;
           border-radius: 999px;
-          padding: 0.5rem;
+          padding: 1rem 1.5rem;
           cursor: pointer;
           background: #fff;
           gap: 0.5rem;
