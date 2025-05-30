@@ -159,7 +159,7 @@ const Home = () => (
       .hosting-section-full,
       .hero-section {
         width: 90%;
-        margin: auto;
+        margin: 3rem auto;
       }
 
       .section-title {
