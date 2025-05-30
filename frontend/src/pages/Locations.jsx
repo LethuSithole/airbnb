@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
+import SearchComponent from '../components/SearchComponent';
 
 const Locations = () => {
   const [accommodations, setAccommodations] = useState([]);
@@ -40,6 +41,7 @@ const Locations = () => {
 
   return (
     <div className="container">
+      <SearchComponent accommodations={accommodations} />
       <h1 className="page-title">Browse Listings</h1>
 
       <div className="filter-bar">

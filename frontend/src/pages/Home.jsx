@@ -1,3 +1,4 @@
+import SearchComponent from "../components/SearchComponent";
 import HeroImage from "../assets/hero-image.jpg";
 import ToDoHome from "../assets/to-do-your-home.jpg";
 import ToDoTrip from "../assets/to-do-your-trip.jpg";
@@ -34,6 +35,8 @@ const Home = () => (
   <div className="home-container">
     {/* Hero Section */}
     <section className="hero-background">
+      {/* Search Component */}
+      <SearchComponent />
       <section
         className="hero-section"
         style={{

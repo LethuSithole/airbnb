@@ -7,6 +7,7 @@ import {
 import Home from "./pages/Home";
 import Locations from "./pages/Locations";
 import LocationDetails from "./pages/LocationDetails";
+import SearchResults from "./pages/SearchResults";
 import Login from "./pages/Login";
 import AdminLogin from "./pages/AdminLogin";
 import Dashboard from "./pages/Dashboard";
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/locations" element={<Locations />} />
           <Route path="/locations/:id" element={<LocationDetails />} />
+          <Route path="/locations/filter/:location" element={<SearchResults />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reservations" element={<Reservations />} />
