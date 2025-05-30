@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const accommodationSchema = new mongoose.Schema({
-  images: [String], // array of image paths or URLs
+  images: [String],
   type: { type: String, required: true },
   location: { type: String, required: true },
   guests: { type: Number, required: true },
