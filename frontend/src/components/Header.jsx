@@ -40,7 +40,6 @@ const Header = () => {
 
         {/* Right Menu */}
         <div className="right-menu">
-          {/* Only show "Become a Host" if user is not a host */}
           {(!user || user.role !== "host") && (
             <Link to="/admin-login" className="host-link">
               Become a Host

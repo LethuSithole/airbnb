@@ -53,9 +53,6 @@ const Login = () => {
                 className="form-input"
               />
             </div>
-            <div className="forgot-password">
-              <a href="/forgot-password" className="forgot-link">Forgot Password?</a>
-            </div>
             <button type="submit" className="login-button">
               Login
             </button>

@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import api from '../api/axios';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateListing = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    title: '',
-    location: '',
-    type: '',
+    title: "",
+    location: "",
+    type: "",
     guests: 1,
     bedrooms: 1,
     bathrooms: 1,
@@ -16,16 +16,18 @@ const CreateListing = () => {
     cleaningFee: 0,
     serviceFee: 0,
     occupancyTaxes: 0,
-    amenities: '',
-    description: '',
+    amenities: "",
+    description: "",
   });
 
-  const [images, setImages] = useState(['']);
-  const [message, setMessage] = useState('');
+  const [images, setImages] = useState([
+    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/70690776.jpg?k=9882aca5376e6fe4f3ebcb3628a8690f044587c4890e72a175abe76779839851&o=&hp=1",
+  ]);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleImageChange = (index, value) => {
@@ -34,26 +36,26 @@ const CreateListing = () => {
     setImages(newImages);
   };
 
-  const addImageField = () => setImages([...images, '']);
+  const addImageField = () => setImages([...images, ""]);
   const removeImageField = (index) => {
     const newImages = images.filter((_, i) => i !== index);
-    setImages(newImages.length > 0 ? newImages : ['']);
+    setImages(newImages.length > 0 ? newImages : [""]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
       ...form,
-      amenities: form.amenities.split(',').map(a => a.trim()),
-      images: images.filter(img => img.trim() !== ''),
+      amenities: form.amenities.split(",").map((a) => a.trim()),
+      images: images.filter((img) => img.trim() !== ""),
     };
 
     try {
-      await api.post('/accommodations', payload);
-      setMessage('Listing created successfully!');
-      setTimeout(() => navigate('/'), 1500);
+      await api.post("/accommodations", payload);
+      setMessage("Listing created successfully!");
+      setTimeout(() => navigate("/"), 1500);
     } catch {
-      setMessage('Failed to create listing');
+      setMessage("Failed to create listing");
     }
   };
 
@@ -63,7 +65,7 @@ const CreateListing = () => {
         View All Listings
       </button>
       <h2 className="page-title">Create Listing</h2>
-      
+
       <form className="listing-form" onSubmit={handleSubmit}>
         <div className="form-grid">
           {/* First Row */}
@@ -78,7 +80,7 @@ const CreateListing = () => {
               required
             />
           </div>
-          
+
           <div className="form-group">
             <label className="form-label">Rooms</label>
             <input
@@ -91,7 +93,7 @@ const CreateListing = () => {
               required
             />
           </div>
-          
+
           <div className="form-group">
             <label className="form-label">Baths</label>
             <input
@@ -104,7 +106,7 @@ const CreateListing = () => {
               required
             />
           </div>
-          
+
           <div className="form-group">
             <label className="form-label">Type</label>
             <input
@@ -117,7 +119,7 @@ const CreateListing = () => {
             />
           </div>
         </div>
-        
+
         {/* Second Row */}
         <div className="form-group full-width">
           <label className="form-label">Location</label>
@@ -130,7 +132,7 @@ const CreateListing = () => {
             required
           />
         </div>
-        
+
         {/* Third Row */}
         <div className="form-group full-width">
           <label className="form-label">Description</label>
@@ -142,7 +144,7 @@ const CreateListing = () => {
             rows={4}
           />
         </div>
-        
+
         {/* Fourth Row */}
         <div className="form-group full-width">
           <label className="form-label">Amenities (comma separated)</label>
@@ -154,7 +156,7 @@ const CreateListing = () => {
             placeholder="wifi, kitchen, parking"
           />
         </div>
-        
+
         {/* Fifth Row - Images */}
         <div className="form-group full-width">
           <label className="form-label">Images</label>
@@ -167,8 +169,8 @@ const CreateListing = () => {
                 onChange={(e) => handleImageChange(idx, e.target.value)}
                 placeholder={`Image URL ${idx + 1}`}
               />
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="remove-image-btn"
                 onClick={() => removeImageField(idx)}
               >
@@ -176,39 +178,49 @@ const CreateListing = () => {
               </button>
             </div>
           ))}
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="add-image-btn"
             onClick={addImageField}
           >
             + Add Image
           </button>
         </div>
-        
+
         {/* Preview Image */}
         {images[0] && (
           <div className="form-group full-width">
             <label className="form-label">Listed Image Preview</label>
             <div className="image-preview">
-              <img src={images[0]} alt="Preview" onError={(e) => e.target.style.display = 'none'} />
+              <img
+                src={images[0]}
+                alt="Preview"
+                onError={(e) => (e.target.style.display = "none")}
+              />
             </div>
           </div>
         )}
-        
+
         {/* Buttons */}
         <div className="form-actions">
-          <button type="submit" className="submit-btn">Create</button>
-          <button 
-            type="button" 
+          <button type="submit" className="submit-btn">
+            Create
+          </button>
+          <button
+            type="button"
             className="cancel-btn"
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate("/dashboard")}
           >
             Cancel
           </button>
         </div>
-        
+
         {message && (
-          <div className={`message ${message.includes('success') ? 'success' : 'error'}`}>
+          <div
+            className={`message ${
+              message.includes("success") ? "success" : "error"
+            }`}
+          >
             {message}
           </div>
         )}
