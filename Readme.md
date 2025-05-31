@@ -4,31 +4,31 @@ This project is a full-stack Airbnb clone built during the Zaio Bootcamp. It rep
 
 Live Demo
 
-Deployed URL: https://zaio-airbnb.vercel.app/
+- Deployed URL: https://zaio-airbnb.vercel.app/
 
 GitHub Repository
 
-Codebase: https://github.com/MeezaanD/zaio-airbnb
+- Code: https://github.com/MeezaanD/zaio-airbnb
 
-Features
+# Features
 
-Landing Page with a featured hero section and image cards
+- Landing Page with a featured hero section and image cards
 
-Search & Filter by location, dates, and guests
+- Search & Filter by location, dates, and guests
 
-Accommodation Listings: View all available properties
+- Accommodation Listings: View all available properties
 
-Location Details Page: Image gallery, amenities, booking calendar
+- Location Details Page: Image gallery, amenities, booking calendar
 
-Reservation System: Make bookings with check-in, check-out, and guest details
+- Reservation System: Make bookings with check-in, check-out, and guest details
 
-Authentication: Separate login systems for users and hosts
+- Authentication: Separate login systems for users and hosts
 
-Admin Dashboard for hosts to manage listings, update, and delete
+- Admin Dashboard for hosts to manage listings, update, and delete
 
-Image URL Input for accommodation creation (pre-filled with a default image)
+- Image URL Input for accommodation creation (pre-filled with a default image)
 
-Dynamic Routing using React Router
+- Dynamic Routing using React Router
 
 Stack
 
@@ -36,12 +36,10 @@ Frontend: React.js, React Router, Axios, Vite
 
 Backend: Node.js, Express.js
 
-Database: MongoDB (deployed on MongoDB Atlas)
+Database: MongoDB
 
 Deployment:
 
 Frontend: Vercel
 
 Backend: Render
-
-Login Credentials (f
