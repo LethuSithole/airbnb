@@ -1,6 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getUser, logout } from "../auth";
-import logo from "../assets/airbnb-logo.png";
+import RedLogo from "../assets/airbnb-logo.png";
+import WhiteLogo from "../assets/airbnb-white-logo.png";
 import { useState } from "react";
 import { FaBars, FaUserCircle, FaGlobe } from "react-icons/fa";
 
@@ -21,7 +22,11 @@ const Header = () => {
       <nav className="nav-container">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Airbnb Logo" className="logo" />
+          <img
+            src={isHomePage ? WhiteLogo : RedLogo}
+            alt="Airbnb Logo"
+            className="logo"
+          />
         </Link>
 
         {/* Center Navigation */}
@@ -86,7 +91,7 @@ const Header = () => {
         }
 
         .logo {
-          height: 64px;
+          height: 60px;
         }
 
         .center-nav {

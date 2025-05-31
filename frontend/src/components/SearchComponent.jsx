@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaSearch, FaCalendarAlt, FaUser } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import api from '../api/axios';
 
 const SearchComponent = () => {
@@ -36,9 +36,7 @@ const SearchComponent = () => {
     <div className="search-container">
       <div className="search-filters">
         <div className="filter-group">
-          <div className="filter-label">
-            Location
-          </div>
+          <div className="filter-label">Location</div>
           <select
             value={selectedLocation}
             onChange={(e) => setSelectedLocation(e.target.value)}
@@ -53,9 +51,7 @@ const SearchComponent = () => {
         </div>
 
         <div className="filter-group">
-          <div className="filter-label">
-            Check in
-          </div>
+          <div className="filter-label">Check in</div>
           <input
             type="date"
             value={checkIn}
@@ -66,9 +62,7 @@ const SearchComponent = () => {
         </div>
 
         <div className="filter-group">
-          <div className="filter-label">
-            Check out
-          </div>
+          <div className="filter-label">Check out</div>
           <input
             type="date"
             value={checkOut}
@@ -79,9 +73,7 @@ const SearchComponent = () => {
         </div>
 
         <div className="filter-group">
-          <div className="filter-label">
-            Guests
-          </div>
+          <div className="filter-label">Guests</div>
           <input
             type="number"
             min="1"
@@ -103,38 +95,41 @@ const SearchComponent = () => {
           max-width: 1200px;
           margin: 0 auto 2rem;
           padding: 1rem;
-          border-radius: 50%;
         }
         
         .search-filters {
           display: flex;
-          gap: 1rem;
+          align-items: center;
           background: white;
           border-radius: 999px;
-          padding: 1rem 2rem;
+          padding: 0.5rem;
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          flex-wrap: wrap;
+          border: 1px solid #ddd;
         }
         
         .filter-group {
           flex: 1;
-          min-width: 200px;
-          border-right: 1px solid #ddd;
-          padding-right: 2rem;
+          padding: 0 2rem;
+          position: relative;
+        }
+        
+        .filter-group:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 60%;
+          width: 1px;
+          background-color: #ddd;
         }
         
         .filter-label {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-size: 0.9rem;
+          font-size: 0.8rem;
           font-weight: 600;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.25rem;
           color: #555;
-        }
-        
-        .filter-icon {
-          color: #666;
+          padding-left: 0.5rem;
         }
         
         .filter-select,
@@ -142,25 +137,29 @@ const SearchComponent = () => {
           width: 100%;
           padding: 0.5rem;
           border: none;
-          border-radius: 8px;
           font-size: 0.95rem;
-          background-color: white;
+          background-color: transparent;
+        }
+        
+        .filter-select:focus,
+        .filter-input:focus {
+          outline: none;
         }
         
         .search-button {
           background: #ff385c;
           color: white;
           border: none;
-          border-radius: 999px;
-          padding: 1.5rem;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           font-weight: 600;
-          height: 50px;
-          align-self: flex-end;
           transition: background 0.2s;
+          flex-shrink: 0;
         }
         
         .search-button:hover {
@@ -170,11 +169,24 @@ const SearchComponent = () => {
         @media (max-width: 768px) {
           .search-filters {
             flex-direction: column;
-            gap: 1.5rem;
+            border-radius: 12px;
+            padding: 1.5rem;
+            gap: 1rem;
+          }
+          
+          .filter-group {
+            width: 100%;
+            padding: 0;
+          }
+          
+          .filter-group:not(:last-child)::after {
+            display: none;
           }
           
           .search-button {
             width: 100%;
+            border-radius: 8px;
+            height: auto;
             padding: 0.75rem;
           }
         }
